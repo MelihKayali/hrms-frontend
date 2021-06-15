@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default class JobAdvertService{
-    getJobAdvertService(){
+    getJobAdverts(){
         return axios.get("http://localhost:8080/api/jobadverts/getall");
     }
-    postJobAdvert(jobadvert){
+    postJobAdvert(jobAdvert){
         axios.post("http://localhost:8080/api/jobadverts/getall",{
             employerId: jobAdvert.employerId,
             jobPositionId: jobAdvert.jobPositionId,

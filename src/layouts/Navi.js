@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Menu } from 'semantic-ui-react'
 import { Container } from 'semantic-ui-react'
+import Searchbar from './Searchbar'
 
 
 export default function Navi() {
@@ -8,6 +9,7 @@ export default function Navi() {
         <div>
             <Menu inverted fixed>
                 <Container>
+                <Searchbar/>
                 <Menu.Item
                     name='home'
                 />

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class TechnologieService{
-    getTechnologie(){
+    getTechnologies(){
         return axios.get("http://localhost:8080/api/technology/getall");
     }
 }
