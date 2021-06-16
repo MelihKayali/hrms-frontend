@@ -1,33 +1,34 @@
-import { Icon,Menu, Table } from 'semantic-ui-react'
+import React from 'react'
 import { useState } from 'react'
+import { Icon,Menu, Table } from 'semantic-ui-react'
 import { useEffect } from 'react';
-import CityService from '../services/CityService';
+import TechnologieService from '../services/TechnologieService';
 
-
-export default function City() {
-    const [cities, setCities] = useState([]);
-
-    useEffect(() => {
-         let cityService = new CityService();
-         cityService.getCities().then(result => setCities(result.data.data))
+export default function Technologies() {
+    const [technologies, setTechnologies] =  useState([])
+ 
+    useEffect(()=>{
+     let technologieService = new TechnologieService()
+     technologieService.getTechnologies().then(result=>setTechnologies(result.data.data))
     })
-    
+
+   
     return (
         <div>
             <Table celled>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>id</Table.HeaderCell>
-                        <Table.HeaderCell>Şehir Adı</Table.HeaderCell>
+                        <Table.HeaderCell>Teknoloji adı</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
                     {
-                        cities.map(cities => (
-                            <Table.Row key={cities.id}>
-                                <Table.Cell>{cities.id}</Table.Cell>
-                                <Table.Cell>{cities.cityName}</Table.Cell>
+                        technologies.map(Technologies => (
+                            <Table.Row key={Technologies.id}>
+                                <Table.Cell>{Technologies.id}</Table.Cell>
+                                <Table.Cell>{Technologies.technologyName}</Table.Cell>
                             </Table.Row>
                         ))
                     }
@@ -55,5 +56,5 @@ export default function City() {
             </Table>
         </div>
     )
-}
 
+}

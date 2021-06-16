@@ -1,15 +1,60 @@
+import LanguageService from "../services/LanguageService";
 import React from 'react'
-import { Form, TextArea } from 'semantic-ui-react'
-import { Select } from 'semantic-ui-react'
+import { useState } from 'react'
+import { Icon,Menu, Table } from 'semantic-ui-react'
+import { useEffect } from 'react';
 
 
-const LevelOptions = [{text : '1'},{text : '2'},{text : '3'},{text :'4'},{text : '5'}]
+export default function LanguageList() {
+  const [languages, setLanguages] = useState([]);
 
-const TextAreaExampleRows = () => (
-  <Form>
-    <TextArea rows={2} placeholder='Bildiğiniz dilleri yazınız' />
-    <Select placeholder='Yabancı Dil Seviyenizi Belirtiniz' options={LevelOptions} />
-  </Form>
+  useEffect(()=>{
+      let languageService = new LanguageService()
+      languageService.getLanguage().then(result=>setLanguages(result.data.data))
+  })
+
+  return (
+    <div>
+        <Table celled>
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell>id</Table.HeaderCell>
+                    <Table.HeaderCell>Dil ismi</Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+                {
+                    languages.map(LanguageList => (
+                        <Table.Row key={LanguageList.id}>
+                            <Table.Cell>{LanguageList.id}</Table.Cell>
+                            <Table.Cell>{LanguageList.languageName}</Table.Cell>
+                        </Table.Row>
+                    ))
+                }
+
+            </Table.Body>
+
+            <Table.Footer>
+                <Table.Row>
+                    <Table.HeaderCell colSpan='3'>
+                        <Menu floated='right' pagination>
+                            <Menu.Item as='a' icon>
+                                <Icon name='chevron left' />
+                            </Menu.Item>
+                            <Menu.Item as='a'>1</Menu.Item>
+                            <Menu.Item as='a'>2</Menu.Item>
+                            <Menu.Item as='a'>3</Menu.Item>
+                            <Menu.Item as='a'>4</Menu.Item>
+                            <Menu.Item as='a' icon>
+                                <Icon name='chevron right' />
+                            </Menu.Item>
+                        </Menu>
+                    </Table.HeaderCell>
+                </Table.Row>
+            </Table.Footer>
+        </Table>
+    </div>
 )
-export default TextAreaExampleRows
-
+  
+}
