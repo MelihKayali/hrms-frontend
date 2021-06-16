@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import CityService from '../services/CityService';
 import { Form, TextArea } from 'semantic-ui-react'
 import { Select } from 'semantic-ui-react'
-import { Button } from 'semantic-ui-react'
+import { Button, Checkbox } from 'semantic-ui-react'
 
 
 
@@ -108,7 +108,18 @@ export default function City() {
             <TextArea rows={2} placeholder='İş tecrübenizi yazınız(Tecrübeniz yoksa lütfen boş bırakmayınız))' />
             <TextArea rows={2} placeholder='Bildiğiniz dilleri yazınız' />
             <Select placeholder='Yabancı Dil Seviyenizi Belirtiniz' options={LevelOptions} />
-            <TextArea placeholder='Hangi teknolojilere hakimsiniz?(Java-Python vb.)' />
+            <TextArea placeholder='Hangi teknolojilere hakimsiniz?(Java-Python vb.)' /><Form.Field>
+                <label>First Name</label>
+                <input placeholder='First Name' />
+            </Form.Field>
+            <Form.Field>
+                <label>Last Name</label>
+                <input placeholder='Last Name' />
+            </Form.Field>
+            <Form.Field>
+                <Checkbox label='I agree to the Terms and Conditions' />
+            </Form.Field>
+            <Button type='submit'>Submit</Button>
             <Button>Cancel</Button>
             <Button.Or />
             <Button positive>Save</Button>

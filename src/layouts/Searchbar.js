@@ -19,8 +19,8 @@ export default class SearchExampleStandard extends Component {
     return (
       <Grid>
         <Grid.Column width={6}>
-          <Search
-            input={{ icon: 'search', iconPosition: 'left' }}
+          <Search style ={{marginLeft : '15em'}}
+            input={{ icon: 'search', iconPosition: 'right' }}
             loading={isLoading}
             onResultSelect={this.handleResultSelect}
             //onSearchChange={}

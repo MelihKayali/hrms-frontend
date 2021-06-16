@@ -1,12 +1,13 @@
 import React from 'react'
 import { Grid } from 'semantic-ui-react'
-// import ResumeAdd from '../pages/ResumeAdd'
+import ResumeAdd from '../pages/ResumeAdd'
 // import JobAdvertList from '../pages/JobAdvertList'
-// import EmployeeUserList from '../pages/EmployeeUserList'
-// import CityList from '../pages/CityList'
+ import EmployeeUserList from '../pages/EmployeeUserList'
+ import CityList from '../pages/CityList'
 // import LanguageList from '../pages/LanguageList'
 // import TechnologiesList from '../pages/TechnologiesList'
 import { Container } from 'semantic-ui-react'
+import { Route } from 'react-router'
 
 
 export default function Dashboard() {
@@ -22,8 +23,9 @@ export default function Dashboard() {
                     <TechnologiesList/> */}
                     </Grid.Column>
                     <Grid.Column width = {12}>
-                        {/* <ResumeAdd/>
-                        <CityList/> */}
+                        <Route path = "/cities" component={CityList}/>
+                        <Route path = "/employees" component={EmployeeUserList}/>
+                        <Route path = "/resumeAdd/:id" component={ResumeAdd}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
