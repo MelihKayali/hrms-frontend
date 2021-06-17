@@ -63,7 +63,7 @@ export default function Home() {
                             Hayellerine 1 Adım Daha Yaklaş
                         </h1>
                         <p style={mystyle}>
-                            Cv.net ile kolayca iş ilanı bulabilir,kolayca sisteme cv ekleyebilir ve hayellerine 1 adım daha yaklaşabilirsin.Tercih senin. Cv.neti kullanan her zaman kazançlıdır.
+                            Business.net ile kolayca iş ilanı bulabilir,kolayca sisteme cv ekleyebilir ve hayellerine 1 adım daha yaklaşabilirsin. Tercih senin. Business.neti kullanan her zaman kazançlıdır.
                         </p>
 
                             <h2 style = {titleStyle2}>

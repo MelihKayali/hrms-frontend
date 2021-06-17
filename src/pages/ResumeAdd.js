@@ -1,131 +1,96 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react';
-import CityService from '../services/CityService';
-import { Form, TextArea } from 'semantic-ui-react'
-import { Select } from 'semantic-ui-react'
-import { Button, Checkbox } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import 'semantic-ui-css/semantic.css';
+import { Form, Input, Dropdown, TextArea } from 'semantic-ui-react-form-validator'
+import { Header, Container, Button, Grid, Segment } from 'semantic-ui-react';
+
+export default class ResumeAdd extends Component {
+    onSubmit = () => {
+        alert("İş ilanı eklendi");
+    }
+    state = {
+        value: ""
+    }
+
+    componentDidMount() {
+        Form.addValidationRule('isFoo', value => {
+            var foo = /foo/;
+            return foo.test(value)
+        })
+    }
+    render() {
+        return (
+            <Container>
+                <Grid centered columns={1}>
+                    <Grid.Column width={10}>
+                        <Segment>
+                            <Segment inverted color="teal"><Header inverted content="İş İlanı Ekleme" centered /></Segment>
+
+                            <Form onSubmit={this.onSubmit} ref="form">
+                                <Input type="text"
+                                    label="Advert Description"
+                                    onChange={(e) => { this.setState({ value: e.target.value }) }}
+                                    value={this.state.value}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <Input
+                                    type="text"
+                                    label="Open Position"
+                                    onChange={(e) => { this.setState({ value2: e.target.value }) }}
+                                    value={this.state.value2}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
 
 
+                                <Input type="text"
+                                    label="City Name"
+                                    onChange={(e) => { this.setState({ value3: e.target.value }) }}
+                                    value={this.state.value3}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <Input
+                                    type="text"
+                                    label="Job Position"
+                                    onChange={(e) => { this.setState({ value4: e.target.value }) }}
+                                    value={this.state.value4}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
 
-export default function City() {
-    const LevelOptions = [{ text: '1' }, { text: '2' }, { text: '3' }, { text: '4' }, { text: '5' }]
-    const [cities, setCities] = useState([]);
+                                <Input type="text"
+                                    label="Working Place"
+                                    onChange={(e) => { this.setState({ value5: e.target.value }) }}
+                                    value={this.state.value5}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <Input
+                                    type="text"
+                                    label="Working Time"
+                                    onChange={(e) => { this.setState({ value6: e.target.value }) }}
+                                    value={this.state.value6}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
 
-    useEffect(() => {
-        let cityService = new CityService();
-        cityService.getCities().then(result => setCities(result.data.data))
-    })
 
-    const countryOptions = [
-        { text: 'ADANA' },
-        { text: 'ADIYAMAN' },
-        { text: 'AFYONKARAHİSAR' },
-        { text: 'AĞRI' },
-        { text: 'AMASYA' },
-        { text: 'ANKARA' },
-        { text: 'ANTALYA' },
-        { text: 'ARTVİN' },
-        { text: 'AYDIN' },
-        { text: 'BALIKESİR' },
-        { text: 'BİLECİK' },
-        { text: 'BİNGÖL' },
-        { text: 'BİTLİS' },
-        { text: 'BOLU' },
-        { text: 'BURDUR' },
-        { text: 'BURSA' },
-        { text: 'ÇANAKKALE' },
-        { text: 'ÇANKIRI' },
-        { text: 'ÇORUM' },
-        { text: 'DENİZLİ' },
-        { text: 'DİYARBAKIR' },
-        { text: 'EDİRNE' },
-        { text: 'ELAZIĞ' },
-        { text: 'ERZİNCAN' },
-        { text: 'ERZURUM' },
-        { text: 'ESKİŞEHİR' },
-        { text: 'GAZİANTEP' },
-        { text: 'GİRESUN' },
-        { text: 'GÜMÜŞHANE' },
-        { text: 'HAKKARİ' },
-        { text: 'HATAY' },
-        { text: 'ISPARTA' },
-        { text: 'MERSİN' },
-        { text: 'İSTANBUL' },
-        { text: 'İZMİR' },
-        { text: 'KARS' },
-        { text: 'KASTAMONU' },
-        { text: 'KAYSERİ' },
-        { text: 'KIRKLARELİ' },
-        { text: 'KIRŞEHİR' },
-        { text: 'KOCAELİ' },
-        { text: 'KONYA' },
-        { text: 'KÜTAHYA' },
-        { text: 'MALATYA' },
-        { text: 'MANİSA' },
-        { text: 'KAHRAMANMARAŞ' },
-        { text: 'MARDİN' },
-        { text: 'MUĞLA' },
-        { text: 'MUŞ' },
-        { text: 'NEVŞEHİR' },
-        { text: 'NİĞDE' },
-        { text: 'ORDU' },
-        { text: 'RİZE' },
-        { text: 'SAKARYA' },
-        { text: 'SAMSUN' },
-        { text: 'SİİRT' },
-        { text: 'SİNOP' },
-        { text: 'SİVAS' },
-        { text: 'TEKİRDAĞ' },
-        { text: 'TOKAT' },
-        { text: 'TRABZON' },
-        { text: 'TUNCELİ' },
-        { text: 'ŞANLIURFA' },
-        { text: 'UŞAK' },
-        { text: 'VAN' },
-        { text: 'YOZGAT' },
-        { text: 'ZONGULDAK' },
-        { text: 'AKSARAY' },
-        { text: 'BAYBURT' },
-        { text: 'KARAMAN' },
-        { text: 'KIRIKKALE' },
-        { text: 'BATMAN' },
-        { text: 'ŞIRNAK' },
-        { text: 'BARTIN' },
-        { text: 'ARDAHAN' },
-        { text: 'IĞDIR' },
-        { text: 'YALOVA' },
-        { text: 'KARABÜK' },
-        { text: 'KİLİS' },
-        { text: 'OSMANİYE' },
-        { text: 'DÜZCE' },
+                                <Input
+                                    type="text"
+                                    label="Min-Max Salary"
+                                    onChange={(e) => { this.setState({ value7: e.target.value }) }}
+                                    value={this.state.value7}
+                                    validators={['required']}
+                                    errorMessages={['this field is required']}
+                                />
+                                <Button color="teal">Ekle</Button>
+                            </Form>
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
 
-    ]
-
-    return (
-        <Form>
-            <Select placeholder='Şehrinizi seçiniz' options={countryOptions} />
-            <TextArea rows={2} placeholder='İş tecrübenizi yazınız(Tecrübeniz yoksa lütfen boş bırakmayınız))' />
-            <TextArea rows={2} placeholder='Bildiğiniz dilleri yazınız' />
-            <Select placeholder='Yabancı Dil Seviyenizi Belirtiniz' options={LevelOptions} />
-            <TextArea placeholder='Hangi teknolojilere hakimsiniz?(Java-Python vb.)' /><Form.Field>
-                <label>First Name</label>
-                <input placeholder='First Name' />
-            </Form.Field>
-            <Form.Field>
-                <label>Last Name</label>
-                <input placeholder='Last Name' />
-            </Form.Field>
-            <Form.Field>
-                <Checkbox label='I agree to the Terms and Conditions' />
-            </Form.Field>
-            <Button type='submit'>Submit</Button>
-            <Button>Cancel</Button>
-            <Button.Or />
-            <Button positive>Save</Button>
-        </Form>
-
-    )
+            </Container>
+        )
+    }
 }
-
-
