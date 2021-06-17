@@ -8,6 +8,7 @@ import ResumeAdd from '../pages/ResumeAdd'
 // import TechnologiesList from '../pages/TechnologiesList'
 import { Container } from 'semantic-ui-react'
 import { Route } from 'react-router'
+import JobAdvertAdd from '../pages/JobAdvertAdd'
 
 
 
@@ -26,6 +27,7 @@ export default function Dashboard() {
                     <Grid.Column width = {12}>
                         <Route exact path = "/cities" component={CityList}/>
                         <Route exact path = "/employees" component={EmployeeUserList}/>
+                        <Route exact path = "/jobAdvetAdd" component={JobAdvertAdd}/>
                         <Route exact path = "/resumeAdd" component={ResumeAdd}/>
                     </Grid.Column>
                 </Grid.Row>
