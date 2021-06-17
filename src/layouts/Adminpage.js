@@ -10,6 +10,7 @@ import { Container } from 'semantic-ui-react'
 import { Route } from 'react-router'
 
 
+
 export default function Dashboard() {
     return (
         <div>
@@ -23,9 +24,9 @@ export default function Dashboard() {
                     <TechnologiesList/> */}
                     </Grid.Column>
                     <Grid.Column width = {12}>
-                        <Route path = "/cities" component={CityList}/>
-                        <Route path = "/employees" component={EmployeeUserList}/>
-                        <Route path = "/resumeAdd/:id" component={ResumeAdd}/>
+                        <Route exact path = "/cities" component={CityList}/>
+                        <Route exact path = "/employees" component={EmployeeUserList}/>
+                        <Route exact path = "/resumeAdd" component={ResumeAdd}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

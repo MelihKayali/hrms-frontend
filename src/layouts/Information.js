@@ -9,7 +9,7 @@ export default function Information() {
              <Dropdown item text='Yönlendirme'>
                         <Dropdown.Menu>
                             <Dropdown.Item>Ana Sayfa</Dropdown.Item>
-                            <Dropdown.Item as ={NavLink} to ="/resumeAdd/:id">Cv Ekleme</Dropdown.Item>
+                            <Dropdown.Item as ={NavLink} to ="/resumeAdd">Cv Ekleme</Dropdown.Item>
                             <Dropdown.Item>İlan ekleme</Dropdown.Item>
                              <DropdownDivider/>
                         <Dropdown.Item>Cv'ne git</Dropdown.Item>

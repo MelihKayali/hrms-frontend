@@ -6,6 +6,7 @@ import Searchbar from './Searchbar'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 export default function Navi() {
@@ -24,12 +25,8 @@ export default function Navi() {
             <Menu inverted fixed>
                 <Container>
                     
-                <Menu.Item
-                    name='home'
-                />
-                <Menu.Item
-                    name='messages'
-                />
+                <Menu.Item as={NavLink} to="Home" name='home'/>
+                <Menu.Item name='messages'/>
                  <Searchbar/>
                  
                 <Menu.Menu position='right'>
