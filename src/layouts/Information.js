@@ -8,7 +8,7 @@ export default function Information() {
         <div>
              <Dropdown item text='Yönlendirme'>
                         <Dropdown.Menu>
-                            <Dropdown.Item>İş İlanları</Dropdown.Item>
+                            <Dropdown.Item as = {NavLink} to ="jobAdvertList">İş İlanları</Dropdown.Item>
                             <Dropdown.Item as ={NavLink} to ="/jobAdvetAdd">İş İlan ekleme</Dropdown.Item>
                             <Dropdown.Item as ={NavLink} to ="resumeAdd">Cv Ekleme</Dropdown.Item>
                              <DropdownDivider/>

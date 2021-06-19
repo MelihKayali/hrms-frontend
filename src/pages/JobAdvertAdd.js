@@ -1,97 +1,81 @@
-import React, { Component } from 'react'
-import 'semantic-ui-css/semantic.css';
-import { Form, Input, Dropdown, TextArea } from 'semantic-ui-react-form-validator'
-import { Header, Container, Button, Grid, Segment, GridColumn } from 'semantic-ui-react';
-
-export default class JobAdvertAdd extends Component {
-    onSubmit = () => {
-        alert("İş ilanı eklendi");
-    }
-    state = {
-        value: ""
-    }
-
-    componentDidMount() {
-        Form.addValidationRule('isFoo', value => {
-            var foo = /foo/;
-            return foo.test(value)
-        })
-    }
-    render() {
-        return (
-            
-                <Grid>
-                    <Grid.Column style={{marginLeft : '20em' , marginTop:'2em'}} width = {10}>
-                        <Segment>
-                            <Segment inverted color="teal"><Header inverted content="İş İlanı Ekleme" centered /></Segment>
-
-                            <Form onSubmit={this.onSubmit} ref="form">
-                                <Input type="text"
-                                   style={{marginLeft : '4.5em'}} placeholder  ="İlan Açıklaması"
-                                    onChange={(e) => { this.setState({ value: e.target.value }) }}
-                                    value={this.state.value}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
-                                <Input
-                                    type="text"
-                                    style={{marginLeft : '4.5em'}}placeholder="Açık pozisyon"
-                                    onChange={(e) => { this.setState({ value2: e.target.value }) }}
-                                    value={this.state.value2}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
+import React from 'react'
+import { Container, Form, Button, GridColumn } from 'semantic-ui-react'
+import { useFormik } from 'formik'
+import * as Yup from "yup"
+import { Segment } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 
-                                <Input type="text"
-                                    style={{marginLeft : '4.5em'}}placeholder="Şehir İsmi"
-                                    onChange={(e) => { this.setState({ value3: e.target.value }) }}
-                                    value={this.state.value3}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
-                                <Input
-                                    type="text"
-                                    style={{marginLeft : '4.5em'}}placeholder="İş pozisyonu"
-                                    onChange={(e) => { this.setState({ value4: e.target.value }) }}
-                                    value={this.state.value4}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
+export default function JobAdvertAdd() {
 
-                                <Input type="text"
-                                    style={{marginLeft : '4.5em'}}placeholder="Çalışma Yeri"
-                                    onChange={(e) => { this.setState({ value5: e.target.value }) }}
-                                    value={this.state.value5}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
-                                <Input
-                                    style={{marginLeft : '4.5em'}}type="text"
-                                    placeholder="Çalışma Saati"
-                                    onChange={(e) => { this.setState({ value6: e.target.value }) }}
-                                    value={this.state.value6}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
+    const formik = useFormik({
+        initialValues: {
+            jobDescription: '',
+            maxSalary: '', // 0, null => NaN
+            minSalary: '',
+            openPosition: '',
+            applicationDeadline: '', // Date
+            employerUserId: '',
+            jobPositionId: '',
+            cityId: ''
+        },
+
+        validationSchema: Yup.object({
+            jobDescription: Yup.string().required("nice try :)"),
+            maxSalary: Yup.string().required("nice try :)"),
+            minSalary: Yup.string().required("nice try :)"),
+            openPosition: Yup.string().required("nice try :)"),
+            applicationDeadline: Yup.string().required("nice try :)"),
+            employerUserId: Yup.string().required("nice try :)"),
+            jobPositionId: Yup.string().required("nice try :)"),
+            cityId: Yup.string().required("nice try :)"),
+        }),
+        onSubmit: (formData) => {
+            console.log(formData)
+        }
+    })
+
+    return (
+        <Container
+            //style={{
+                //textAllign: "center",
+                //display: "flex",
+                //alignItems: "center",
+                //flexDirection: "column",
+                //justifyContent: "space-around",
+                //height: "100vh"
+            //}}
+        >
+            <Grid>
+                <GridColumn width={6}>
+                <img style={{ marginLeft: '0em', marginTop: '0em' , marginLeft : '-5em' }} src={process.env.PUBLIC_URL + '/image/01.-Advertising.svg'} alt="Photo" width="600" height="600"></img>
+                </GridColumn>
+                <GridColumn style={{ marginLeft: 'auto', marginRight: "0", marginTop: '2em', display: "flex", justifyContent: "space-around" }} width={10}>
+                    <Segment style={{ width: "75%" }} >
+                        <Segment inverted color="teal"><Header inverted content="İş İlanı Ekleme" centered /></Segment>
+                        <Form onSubmit={formik.handleSubmit}>
+                            <Form.Input type="text" placeholder="Job Description" name="jobDescription" onChange={formik.handleChange} error={formik.errors.jobDescription} value={formik.values.jobDescription} />
+                            <Form.Input type="text" placeholder="maxSalary" name="maxSalary" onChange={formik.handleChange} error={formik.errors.maxSalary} value={formik.values.maxSalary} />
+                            <Form.Input type="text" placeholder="minSalary" name="minSalary" onChange={formik.handleChange} error={formik.errors.minSalary } value={formik.values.minSalary} />
+                            <Form.Input type="text" placeholder="openPosition" name="openPosition" onChange={formik.handleChange} error={formik.errors.openPosition} value={formik.values.openPosition} />
+                            <Form.Input type="text" placeholder="applicationDeadline" name="applicationDeadline" onChange={formik.handleChange} error={formik.errors.applicationDeadline} value={formik.values.applicationDeadline} />
+                            <Form.Input type="text" placeholder="employerUser" name="employerUserId" onChange={formik.handleChange} error={formik.errors.employerUserId} value={formik.values.employerUserId} />
+                            <Form.Input type="text" placeholder="jobPosition" name="jobPositionId" onChange={formik.handleChange} error={formik.errors.jobPositionId} value={formik.values.jobPositionId} />
+                            <Form.Input type="text" placeholder="city" name="cityId" onChange={formik.handleChange} error={formik.errors.cityId } value={formik.values.cityId} />
+                            <Button type="submit">Ekle</Button>
+                            <Button type="button" onClick={formik.handleReset}>Sıfırla</Button>
+                        </Form>
+                    </Segment>
+                </GridColumn>
+            </Grid>
+            {/* <h1>İş İlanı Ekleme</h1> */}
 
 
-                                <Input
-                                    type="text"
-                                    style={{marginLeft : '4.5em'}}placeholder="En Düşük - En yüksek Maaş"
-                                    onChange={(e) => { this.setState({ value7: e.target.value }) }}
-                                    value={this.state.value7}
-                                    validators={['required']}
-                                    errorMessages={['this field is required']}
-                                />
-                                <Button color="teal">Ekle</Button>
-                            </Form>
-                        </Segment>
-                    </Grid.Column>
-                    <GridColumn width={6}>
-                    <img style={{ marginLeft: '-30em', marginTop: '-60em' }} src={process.env.PUBLIC_URL + '/image/01.-Advertising.svg'} alt="Photo" width="500" height="500"></img>    
-                    </GridColumn>
-                </Grid>           
-        )
-    }
+        </Container>
+    )
 }
+
+
+
+

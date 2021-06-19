@@ -18,8 +18,8 @@ export default class SearchExampleStandard extends Component {
 
     return (
       <Grid>
-        <Grid.Column width={6}>
-          <Search style ={{marginLeft : '15em'}}
+        <Grid.Column>
+          <Search style ={{marginLeft : '18em' , marginTop : '0.5em'}}
             input={{ icon: 'search', iconPosition: 'right' }}
             loading={isLoading}
             onResultSelect={this.handleResultSelect}

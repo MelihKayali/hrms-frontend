@@ -27,7 +27,7 @@ export default function Navi() {
                     
                 <Menu.Item as={NavLink} to="Home" name='home'/>
                 <Menu.Item name='messages'/>
-                 <Searchbar/>
+                 <Searchbar />
                  
                 <Menu.Menu position='right'>
                     <Information/>
