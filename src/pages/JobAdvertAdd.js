@@ -55,14 +55,14 @@ export default function JobAdvertAdd() {
                     <Segment style={{ width: "75%" }} >
                         <Segment inverted color="teal"><Header inverted content="İş İlanı Ekleme" centered /></Segment>
                         <Form onSubmit={formik.handleSubmit}>
-                            <Form.Input type="text" placeholder="Job Description" name="jobDescription" onChange={formik.handleChange} error={formik.errors.jobDescription} value={formik.values.jobDescription} />
-                            <Form.Input type="text" placeholder="maxSalary" name="maxSalary" onChange={formik.handleChange} error={formik.errors.maxSalary} value={formik.values.maxSalary} />
-                            <Form.Input type="text" placeholder="minSalary" name="minSalary" onChange={formik.handleChange} error={formik.errors.minSalary } value={formik.values.minSalary} />
-                            <Form.Input type="text" placeholder="openPosition" name="openPosition" onChange={formik.handleChange} error={formik.errors.openPosition} value={formik.values.openPosition} />
-                            <Form.Input type="text" placeholder="applicationDeadline" name="applicationDeadline" onChange={formik.handleChange} error={formik.errors.applicationDeadline} value={formik.values.applicationDeadline} />
-                            <Form.Input type="text" placeholder="employerUser" name="employerUserId" onChange={formik.handleChange} error={formik.errors.employerUserId} value={formik.values.employerUserId} />
-                            <Form.Input type="text" placeholder="jobPosition" name="jobPositionId" onChange={formik.handleChange} error={formik.errors.jobPositionId} value={formik.values.jobPositionId} />
-                            <Form.Input type="text" placeholder="city" name="cityId" onChange={formik.handleChange} error={formik.errors.cityId } value={formik.values.cityId} />
+                            <Form.Input type="text" placeholder="Job Description" name="jobDescription" onChange={formik.handleChange} error={formik.errors.jobDescription && formik.touched.jobDescription} value={formik.values.jobDescription} />
+                            <Form.Input type="text" placeholder="maxSalary" name="maxSalary" onChange={formik.handleChange} error={formik.errors.maxSalary && formik.touched.maxSalary} value={formik.values.maxSalary} />
+                            <Form.Input type="text" placeholder="minSalary" name="minSalary" onChange={formik.handleChange} error={formik.errors.minSalary && formik.touched.minSalary} value={formik.values.minSalary} />
+                            <Form.Input type="text" placeholder="openPosition" name="openPosition" onChange={formik.handleChange} error={formik.errors.openPosition&& formik.touched.openPosition} value={formik.values.openPosition} />
+                            <Form.Input type="text" placeholder="applicationDeadline" name="applicationDeadline" onChange={formik.handleChange} error={formik.errors.applicationDeadline&& formik.touched.applicationDeadline} value={formik.values.applicationDeadline} />
+                            <Form.Input type="text" placeholder="employerUser" name="employerUserId" onChange={formik.handleChange} error={formik.errors.employerUserId && formik.touched.employerUserId} value={formik.values.employerUserId} />
+                            <Form.Input type="text" placeholder="jobPosition" name="jobPositionId" onChange={formik.handleChange} error={formik.errors.jobPositionId && formik.touched.jobPositionId} value={formik.values.jobPositionId} />
+                            <Form.Input type="text" placeholder="city" name="cityId" onChange={formik.handleChange} error={formik.errors.cityId && formik.touched.cityId } value={formik.values.cityId} />
                             <Button type="submit">Ekle</Button>
                             <Button type="button" onClick={formik.handleReset}>Sıfırla</Button>
                         </Form>
@@ -75,7 +75,6 @@ export default function JobAdvertAdd() {
         </Container>
     )
 }
-
 
 
 
