@@ -8,6 +8,8 @@ import { Route } from 'react-router';
 import JobAdvertAdd from './pages/JobAdvertAdd';
 import JobAdvertList from './pages/JobAdvertList'
 import ResumeAdd from './pages/ResumeAdd'
+import JobAdvertDetail from './pages/JobAdvertDetail';
+import EmployeeConfirmJobAdvert from './pages/EmployeeConfirmJobAdvert';
 
 
 
@@ -19,7 +21,8 @@ function App() {
       <Route exact path = "/jobAdvetAdd" component={JobAdvertAdd}/>
       <Route exact path = "/jobAdvertList" component={JobAdvertList}/>
       <Route exact path = "/resumeAdd" component={ResumeAdd}/>
-      
+      <Route exact path = "/jobAdverts/:id" component = {JobAdvertDetail}/>
+      <Route exact path = "/EmployeeConfirmJobAdvert" component = {EmployeeConfirmJobAdvert}/>
       <Container className = "main">
         <Adminpage/>
       </Container>

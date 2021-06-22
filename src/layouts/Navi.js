@@ -7,13 +7,14 @@ import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-
+import { useHistory } from 'react-router'
 
 export default function Navi() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-
+    const history = useHistory()
     function handleSignOut(params) {
         setIsAuthenticated(false)
+        history.push("/Home")
     }
 
     function handleSıgnIn(params) {

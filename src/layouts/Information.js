@@ -11,6 +11,7 @@ export default function Information() {
                             <Dropdown.Item as = {NavLink} to ="jobAdvertList">İş İlanları</Dropdown.Item>
                             <Dropdown.Item as ={NavLink} to ="/jobAdvetAdd">İş İlan ekleme</Dropdown.Item>
                             <Dropdown.Item as ={NavLink} to ="resumeAdd">Cv Ekleme</Dropdown.Item>
+                            <Dropdown.Item as = {NavLink} to = "EmployeeConfirmJobAdvert">İş İlanı Onaylama</Dropdown.Item>
                              <DropdownDivider/>
                         <Dropdown.Item>Cv'ne git</Dropdown.Item>
                         </Dropdown.Menu>

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useEffect } from 'react';
 import JobAdvertService from '../services/JobAdvertService';
 import { Container } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -44,7 +45,7 @@ export default function JobAdvertList() {
               jobAdverts.map(jobAdvert => (
                 <Table.Row key={jobAdvert.id}>
                   {/* <Table.Cell>{jobAdvert.jobDescrition}</Table.Cell> */}
-                   <Table.Cell>{jobAdvert.minSalary}</Table.Cell>
+                   <Table.Cell><Link to ={`/jobAdverts/${jobAdvert.id}`}>{jobAdvert.minSalary}</Link></Table.Cell>
                   <Table.Cell>{jobAdvert.maxSalary}</Table.Cell>                
                   <Table.Cell>{jobAdvert.openPosition}</Table.Cell>
                   {/* <Table.Cell>{jobAdvert.applicationDeadline}</Table.Cell> */}

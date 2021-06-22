@@ -19,13 +19,13 @@ export default function Dashboard() {
             <Container>
             <Grid>
                 <Grid.Row>
-                    <Grid.Column width = {4}> 
+                    <Grid.Column> 
                     {/* <JobAdvertList/>
                     <EmployeeUserList/>
                     <LanguageList/>
                     <TechnologiesList/> */}
                     </Grid.Column>
-                    <Grid.Column width = {12}>
+                    <Grid.Column>
                         <Route exact path = "/cities" component={CityList}/>
                         <Route exact path = "/employees" component={EmployeeUserList}/>      
                     </Grid.Column>
