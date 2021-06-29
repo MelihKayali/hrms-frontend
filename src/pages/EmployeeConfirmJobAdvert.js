@@ -1,23 +1,33 @@
 import React from 'react'
 import { Container, Table, Button } from 'semantic-ui-react'
 import { useState, useEffect } from 'react';
-import JobAdvertService from '../services/JobAdvertService';
+import EmployeeConfirmJobAdvertsService from '../services/EmployeeConfirmJobAdvertsService';
 
 
 export default function EmployeeConfirmJobAdvert() {
-    const [jobAdverts, setJobAdverts] = useState([]);
+    const [employeeConfirmJobAdverts, setEmployeeConfirmJobAdvert] = useState([]);
 
-    useEffect(() => {
-        let jobAdvertService = new JobAdvertService()
-        jobAdvertService.getJobAdverts().then(result => setJobAdverts(result.data.data))
-    }, [])
+    // useEffect(() => {
+    //     let employeeConfirmJobAdvertsService = new EmployeeConfirmJobAdvertsService()
+    //     employeeConfirmJobAdvertsService.addConfirmJobAdverts().then(result => setEmployeeConfirmJobAdvert(result.data.data))
+    // }, [])
 
 
+    const confirmjobadvert = (employeeConfirmJobAdvertId , jobAdvertId) =>{
+        let employeeConfirmJobAdvertsService = new EmployeeConfirmJobAdvertsService()
+        employeeConfirmJobAdvertsService.confirmJobAdverts(employeeConfirmJobAdvertId , jobAdvertId)
+    }
+
+
+
+    const refuseJobAdverts = (employeeConfirmJobAdvertId , jobAdvertId) =>{
+        let employeeConfirmJobAdvertsService = new EmployeeConfirmJobAdvertsService()
+        employeeConfirmJobAdvertsService.refuseJobAdverts(employeeConfirmJobAdvertId , jobAdvertId)
+    }
 
     return (
         <div>
             <Container>
-
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
@@ -37,18 +47,18 @@ export default function EmployeeConfirmJobAdvert() {
                     <Table.Body>
 
                         {
-                            jobAdverts.map(jobAdvert => (
-                                <Table.Row key={jobAdvert.id}>
+                            employeeConfirmJobAdverts.map(employeeConfirmJobAdvert => (
+                                <Table.Row key={employeeConfirmJobAdvert.id}>
                                     {/* <Table.Cell>{jobAdvert.jobDescrition}</Table.Cell> */}
-                                    <Table.Cell>{jobAdvert.minSalary}</Table.Cell>
-                                    <Table.Cell>{jobAdvert.maxSalary}</Table.Cell>
-                                    <Table.Cell>{jobAdvert.openPosition}</Table.Cell>
+                                    <Table.Cell>{employeeConfirmJobAdvert.minSalary}</Table.Cell>
+                                    <Table.Cell>{employeeConfirmJobAdvert.maxSalary}</Table.Cell>
+                                    <Table.Cell>{employeeConfirmJobAdvert.openPosition}</Table.Cell>
                                     {/* <Table.Cell>{jobAdvert.applicationDeadline}</Table.Cell> */}
-                                    <Table.Cell>{jobAdvert.createdDate}</Table.Cell>
+                                    <Table.Cell>{employeeConfirmJobAdvert.createdDate}</Table.Cell>
                                     {/* <Table.Cell>{jobAdvert.isActive}</Table.Cell> */}
                                     {/* <Table.Cell>{jobAdvert.employerUser}</Table.Cell> */}
-                                    <Table.Cell>{jobAdvert.jobPosition.position}</Table.Cell>
-                                    <Table.Cell>{jobAdvert.city.cityName}</Table.Cell>
+                                    <Table.Cell>{employeeConfirmJobAdvert.jobPosition.position}</Table.Cell>
+                                    <Table.Cell>{employeeConfirmJobAdvert.city.cityName}</Table.Cell>
                                     <Button color = "green">Onayla</Button>
                                      <Button color = "red">Reddet</Button>   
                                     
